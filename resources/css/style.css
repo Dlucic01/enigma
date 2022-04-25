@@ -1,0 +1,202 @@
+@font-face {
+  font-family: lato-regular;
+  src: url(Lato-Regular.ttf);
+}
+
+body {
+  background-color: #000000;
+  font-family: lato-regular;
+  color: #ffffff;
+}
+
+.icon_tray {
+	position: fixed;
+	margin:auto;
+	width: 50%;
+	text-align:center;
+	left: 0;
+	right: 0;
+	bottom: 0.5em;
+}
+
+.login {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align:center;
+}
+
+.main_space {
+height: 90%;
+width : 90%;
+background-color: #192332;
+position: relative;
+top:10px;
+margin: auto;
+
+border: 3px solid #000000;
+padding: 10px;
+margin-bottom: 250px;
+
+}
+
+a, p {
+  text-decoration: none;
+  color: white;
+}
+
+.textbox {
+  height:2.5em;
+  width:20em;
+  font-size:16px;
+  position:relative;
+}
+
+
+
+
+
+
+input{
+ text-align:center;
+}
+
+
+
+.button {
+  height:2.5em;
+  width:8.5em;
+  border-radius: 30px;
+  background-color:#00008b;
+  border:none;
+  color:white;
+  font-size:16px;
+}
+
+.black_button {
+  text-decoration: none;
+  background-color: #000000;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  align-content: center;
+}
+
+.menu_align {
+    display: flex;
+    align-items:center;
+}
+
+.menu_border {
+  padding: 0px -10px 0px -10px;
+  border-bottom: solid;
+}
+
+
+#chat {
+  width:100%;
+  display: inline-block;
+}
+
+#friend_list {
+width:10em;
+float:left;
+display:inline-block;
+margin-left:0.5%;
+margin-top: 2em;
+border: solid 1px #ffffff;
+}
+
+.friend_button {
+  text-decoration: none;
+  background-color: #000000;
+  border: none;
+  color: white;
+  width: 100%;
+  height: 2em;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1em;
+  display: flex;
+  align-content: center;
+  margin-bottom:-1em;
+border: solid 1px #ffffff;
+}
+.friend_button:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+
+
+#messages_box{
+  width: calc(89% - 9em);
+  height:calc(85% - 5em);
+  margin-right:3%;
+  margin-top:2em;
+  max-height:calc(85% - 5em);
+  background-color: #101010;
+  border: solid 3px white;
+  display:inline-block;
+  position: fixed;
+  overflow-y: scroll;
+}
+
+#messages_box h2 {
+  text-align: center;
+}
+
+
+.text_message {
+  font-size:16px;
+  width:80%;
+  left: 50%;
+  transform: translate(-57%);
+  height: 5%;
+  margin-left: 5%;
+  position: fixed;
+  bottom:2em;
+  display: inline-block;
+}
+
+
+.text_message_submit {
+  font-size:16px;
+  width:7%;
+  height:5%;
+  position: fixed;
+  bottom:2em;
+  right:2.3em;
+  display: inline-block;
+
+}
+.chat_friend_title {
+
+}
+
+.friend_message {
+  margin-left: 1em;
+  max-width: 50%;
+}
+
+.user_message {
+  text-align: right;
+
+}
+
+@media screen and (max-width: 980px) {
+.login {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align:center;
+
+  }
+
+
+}
+
