@@ -5,8 +5,8 @@
  */
 
 if (isset($_POST["submit"])) {
-	require_once("../../src/classes/User_Auth.php"); #UserAuth class
-	require_once("send_email.php"); #send_email function
+	require("../classes/User_Auth.php"); #User_Auth class
+	require("../classes/SendMail.php"); #SendMail class
 
 	//Setters
 	$user = new UserAuth;
@@ -22,28 +22,29 @@ if (isset($_POST["submit"])) {
 
 	//Argumenst for send_email function
 	$to = $user->getEmail();
-	$from = "david.lucic007@gmail.com";
+	$from = $_ENV['GUSER'];
 
 	$from_name = "Enigma";
 	$subject = "Welcome to Enigma";
 	$body = "<p>Thank you for registering!</p>
 				 <p>This is a verification email, please click the link to veriy your email address.</p>
-					<p><a href =http://192.168.100.14/enigma/src/model/verify_email.php?code={$user->getVerificationCode()}>Click to verify</a></p>
+					<p><a href = http://localhost/enigma/src/model/verify_email.php?code={$user->getVerificationCode()}&user={$user->getUsername()}>Click to verify</a></p>
 									 <p>If this is not you, please do not click on the link</p>";
 
 	//id data returned from getUserData() method, username or email exits
 	if (is_array($data) && count($data) > 0) {
 		echo "<h3>Email you provided is already registered or username exists</h3>";
 		echo "<p><a href= ../../public/view/login.php>Login instead?</a></p>";
-	} else {
-		#if new mail is provided and data is processed send token to user email
+	}
+	else {
+		//if new mail is provided and data is processed send token to user email
 		if ($user->saveData()) {
 
-			if (send_email($to, $from, $from_name, $subject, $body)) {
+			if (SendMail::sendEmail($to, $from, $from_name, $subject, $body)) {
 				$success_message = "Verification Email sent to "  . $user->getEmail() . ", verify your email before logging in";
-
 				echo "<p>$success_message</p>";
-			} else {
+			}
+			else {
 				echo "Email not sent";
 			}
 		} else {
@@ -52,3 +53,5 @@ if (isset($_POST["submit"])) {
 		}
 	}
 }
+
+?>

@@ -28,10 +28,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			$_SESSION['username'] = $row['username'];
 			header("Location: ../../public/view/homepage.php");
 			exit();
-		} else {
+		}
+		else {
 			echo "<p>Wrong password/username combination. Try again.</p>";
 			include("../../public/view/login.php");
 		}
 	}
+	else
+	{
+		echo "<p>Click on the link we sent you before loggin in</p>";
+		include("../../public/view/login.php");
+	}
+
 	$conn = null;
 }
