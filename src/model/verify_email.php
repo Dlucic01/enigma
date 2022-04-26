@@ -1,26 +1,22 @@
 <?php
 
-//if user clicked on the link change his status and for now redirect to homepage
-//TODO make createPage function work and redirect there after used logs in
+//if user clicked on the link change his status and log him in
 if (isset($_GET['code'])) {
-
 	require_once("../classes/User_Auth.php");
 	$user = new UserAuth;
 	$user->setVerificationCode($_GET['code']);
 
 	if ($user->isValidEmailToken()) {
 		$user->setStatus('Enabled');
-	}
+		if ($user->enableAccount()) {
 
-	if ($user->enableAccount()) {
-		$user->createPage($_GET['user'], $_GET['id']);
-		header("Location: ../../public/view/login.php?action=verified");
-		exit();
+			header("Location: ../../public/view/login.php?action=verified");
+
+			exit();
+		} else {
+			echo "Error, account not enabled";
+		}
+	} else {
+		echo "Error, token is invalid";
 	}
-	else {
-		echo "Error, account not enabled";
-	}
-}
-else {
-		echo "There is a mistake with the address of the sender, please change url in register_validation.php";
 }

@@ -5,13 +5,15 @@ session_start();
 
 
 
-$sql = 'SELECT id, username FROM user_profile WHERE username = :username';
+$sql = 'SELECT id, username FROM user_profile WHERE id = :id';
 $stmt = new DBConn;
 
 $db = $stmt->connect()->prepare($sql);
-$db->bindParam(':username', $user_profile_id);
+$db->bindParam(':id', $user_profile_id);
 $db->execute();
 $row = $db->fetchAll(PDO::FETCH_ASSOC);
+#echo "<p>" . $row[0]['username'] . "</p>";
+
 $username = $row[0]['username'];
 
 
