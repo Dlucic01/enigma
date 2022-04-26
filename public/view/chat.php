@@ -104,7 +104,7 @@ include_once("../../resources/html/header.php");
             <input class="text_message_submit" type="submit" value="Send">
         </form>
         <?php
-        #require("../../config/database.php");
+        require("../../config/database.php");
         $sql = "SELECT * FROM messages WHERE users_username = :users_username";
         $stmt_msg = new DBConn;
 
