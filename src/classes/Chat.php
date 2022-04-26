@@ -78,11 +78,9 @@ class Chat
         $stmt = $this->connection->prepare($sql);
         $stmt->bindparam(":from_one", $this->from_one);
         $stmt->bindparam(":from_two", $this->from_two);
-
         if ($stmt->execute()) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }

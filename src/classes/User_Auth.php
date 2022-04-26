@@ -1,6 +1,7 @@
 <?php
 class UserAuth
 {
+	private $id;
 	private $first_name;
 	private $last_name;
 	private $username;
@@ -21,6 +22,10 @@ class UserAuth
 	}
 
 	//Setter methods with preg_match for restriction of user input 
+	public function setId(int $id)
+	{
+		$this->id = $id;
+	}
 
 	public function setFirstName(string $first_name)
 	{
@@ -83,6 +88,10 @@ class UserAuth
 	}
 
 	//Getters
+	public function getId(): int
+	{
+		return $this->id;
+	}
 	public function getFirstName(): string
 	{
 		return $this->first_name;
@@ -116,6 +125,7 @@ class UserAuth
 		return $this->verification_code;
 	}
 
+
 	public static function verifyInput($input): string
 	{
 		$input = trim($input);
@@ -134,8 +144,7 @@ class UserAuth
 		if ($stmt->execute()) {
 			$data = $stmt->fetch(PDO::FETCH_ASSOC);
 			return $data;
-		}
-		else {
+		} else {
 			echo "Nothing found in SQL query";
 			return 0;
 		}
@@ -199,7 +208,7 @@ class UserAuth
 		}
 	}
 
-	//users token is valid, update the current user and set his\hers status to 'Enabled'
+	//users token is valid, now enable users account 
 	public function enableAccount(): bool
 	{
 		$sql = "UPDATE user_profile SET status = :status WHERE verification_code = :verification_code";
@@ -207,41 +216,38 @@ class UserAuth
 		$stmt->bindParam(':status', $this->status);
 		$stmt->bindParam(':verification_code', $this->verification_code);
 
-		if ($stmt->execute()) {
-			return true;
-		}
-		else {
-			return false;
-		}
 
-	}
+		$username = $this->username;
+		$id = $this->id;
 
-	public function createPage(string $username)
-	{
+		$user_profile_id = '$user_profile_id';
+		$file_name = $username . $id . "file.php";
+		$file_name = strtolower($file_name);
+		$file_name = str_replace(' ', '_', $file_name);
 
-		if($this->enableAccount() == true)
-		{
 
-			$user_profile_id = '$user_profile_id';
-			$file_name = $username . ".php";
-			$file_name = strtolower($file_name);
-			$file_name = str_replace(' ', '_', $file_name);
+		$user_profile_page = fopen("../../public/user_profiles/$file_name", "w") or die("Unable to open file!");
 
-			$user_profile_page = fopen("../../public/user_profiles/$file_name", "w") or die("Unable to open file!");
+		if (isset($user_profile_page)) {
 
-				if (isset($user_profile_page)) {
-					$txt = "<?php
-					$user_profile_id = $username;
-					include_once('../../resources/php/user_profile.php');
-					?>";
+			$txt = "<?php
 
-					fwrite($user_profile_page, $txt);
-					fclose($user_profile_page);
-				}
-				else
-				{
-					echo "<p>File could not be created</p>";
-				}
+		$user_profile_id = $id;
+
+		include_once('../../resources/php/user_profile.php');
+
+		?>";
+
+			fwrite($user_profile_page, $txt);
+			fclose($user_profile_page);
+
+
+
+			if ($stmt->execute()) {
+				return true;
+			} else {
+				return false;
+			}
 		}
 	}
 }

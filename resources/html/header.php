@@ -14,6 +14,7 @@ $db_id->bindParam(':username', $s_username);
 $db_id->execute();
 $row_id = $db_id->fetchAll(PDO::FETCH_ASSOC);
 
+
 ?>
 
 <head>
@@ -53,7 +54,7 @@ $row_id = $db_id->fetchAll(PDO::FETCH_ASSOC);
 
                 }
                 if (isset($s_username)) {
-                    echo "<span style='float:right; position:absolute; right:3em;'>Good day, <a href='/enigma/public/user_profiles/" . $s_username  . ".php'>" . $s_username . "</a></span><br>";
+                    echo "<span style='float:right; position:absolute; right:3em;'>Good day, <a href='/enigma/public/user_profiles/" . $s_username . $row_id[0]['id'] . ".php'>" . $s_username . "</a></span><br>";
                     echo "<a style='float:right; position:absolute; right:3em;  href='/enigma/src/model/logout.php'>Logout</a>";
                 }
                 ?>
