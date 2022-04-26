@@ -80,4 +80,3 @@ if ($_SESSION['username'] != $row[0]['username']) {
 <?php
 }
 ?>
-</div>
