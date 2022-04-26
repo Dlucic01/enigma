@@ -22,12 +22,12 @@ $username = $row[0]['username'];
 if ($_SESSION['username'] == $row[0]['username']) {
 ?>
     <form method="post" action="" style="display:inline;">
-        <input type="submit" name="posts" class="button" style="font-size:16px;" value="Posts">
-        <input type="submit" name="posts" class="button" style="font-size:16px;" value="Friends">
+        <input type="submit" name="posts" class="user_page_tray" style="font-size:16px;" value="Posts">
+        <input type="submit" name="posts" class="user_page_tray" style="font-size:16px;" value="Friends">
     </form>
 
     <form method="post" action="" style="display:inline;">
-        <button type="submit" name="request_list" class="button" style="font-size:16px;">Friend Requests</button>
+        <button type="submit" name="request_list" class="user_page_tray" style="font-size:16px;">Friend Requests</button>
     </form>
 
 
@@ -48,13 +48,14 @@ if ($_SESSION['username'] == $row[0]['username']) {
     ?>
             <form method="post" action="../../src/model/friend_accept_validation.php" style="display:inline;">
                 <p> <?php echo $possible_friend ?></p>
-                <button type="submit" name="accept" class="button" style="font-size:16px;" value="<?php echo $possible_friend; ?>">Accept</button>
+                <button type="submit" name="accept" class="user_page_tray" style="font-size:16px;" value="<?php echo $possible_friend; ?>">Accept</button>
 
 
             </form>
     <?php
         }
     }
+    include_once("$docroot/resources/html/footer.php");
 }
 
 
@@ -70,16 +71,17 @@ if ($_SESSION['username'] != $row[0]['username']) {
 
     <h3><?php echo $username; ?> </h3>
     <form method="post" action="" style="display:inline;">
-        <input type="submit" name="posts" class="button" style="font-size:16px;" value="Posts">
-        <input type="submit" name="posts" class="button" style="font-size:16px;" value="Friends">
+        <input type="submit" name="posts" class="user_page_tray" style="font-size:16px;" value="Posts">
+        <input type="submit" name="posts" class="user_page_tray" style="font-size:16px;" value="Friends">
     </form>
 
     <form method="post" action="../../src/model/friend_request_validation.php" style="display:inline;">
-        <button type="submit" name="friend_request" class="button" style="font-size:16px;" value="<?php echo $username; ?>">Add Friend</button>
+        <button type="submit" name="friend_request" class="user_page_tray" style="font-size:16px;" value="<?php echo $username; ?>">Add Friend</button>
 
     </form>
 
 <?php
+
 }
 ?>
 </div>

@@ -40,7 +40,7 @@ $row_id = $db_id->fetchAll(PDO::FETCH_ASSOC);
                 if (!$s_username || $s_username == "") {
 
                 ?>
-                    <form style="display:inline-block;" action="../../src/model/login_verification.php" method="POST">
+                    <form style="display:inline-block;" action="/enigma/src/model/login_verification.php" method="POST">
                         <input type="text" name="username" placeholder="Username or Email">
                         <br>
                         <input type="password" name="password" placeholder="Password">
@@ -54,8 +54,13 @@ $row_id = $db_id->fetchAll(PDO::FETCH_ASSOC);
 
                 }
                 if (isset($s_username)) {
-                    echo "<span style='float:right; position:absolute; right:3em;'>Good day, <a href='/enigma/public/user_profiles/" . $s_username . $row_id[0]['id'] . ".php'>" . $s_username . "</a></span><br>";
-                    echo "<a style='float:right; position:absolute; right:3em;  href='/enigma/src/model/logout.php'>Logout</a>";
+                    echo " <div class='user_search'>  <span >Good day, <a href='/enigma/public/user_profiles/" . $s_username . $row_id[0]['id'] . ".php'>" . $s_username . "</a></span><br>";
+                    echo "<a   href='/enigma/src/model/logout.php'>Logout</a>";
+                    include_once("$docroot/public/view/search_users_form.php");
+                    ?>
+                    </div>
+                    <?php
+
                 }
                 ?>
             </div>

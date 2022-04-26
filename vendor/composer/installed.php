@@ -1,22 +1,31 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
+        'reference' => 'cda631f79b77a461b2dcb1a43f4f6548a2fd5f29',
         'name' => '__root__',
         'dev' => true,
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => 'cda631f79b77a461b2dcb1a43f4f6548a2fd5f29',
+            'dev_requirement' => false,
+        ),
+        'benhall14/php-calendar' => array(
+            'pretty_version' => '1.2',
+            'version' => '1.2.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../benhall14/php-calendar',
+            'aliases' => array(),
+            'reference' => '5dbf8e63b0778c0d7549ee4d935d2627b850319f',
             'dev_requirement' => false,
         ),
         'phpmailer/phpmailer' => array(
