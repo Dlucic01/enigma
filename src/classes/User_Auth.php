@@ -221,7 +221,7 @@ class UserAuth
 		$id = $this->id;
 
 		$user_profile_id = '$user_profile_id';
-		$file_name = $username . $id . "file.php";
+		$file_name = $username . $id . ".php";
 		$file_name = strtolower($file_name);
 		$file_name = str_replace(' ', '_', $file_name);
 
